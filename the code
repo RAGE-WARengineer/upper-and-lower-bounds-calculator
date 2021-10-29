@@ -1,0 +1,106 @@
+using System;
+
+namespace MAX_MIN_SUP_INF
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "analyse 1 script_VALHALLA1";
+            field_scritp:
+            Console.WriteLine("Hello sir!\ncan you please enter ur field in one of this forme\n [a,b] {a,b} [a,b} {a,b] : ");
+            tryagain:
+            String field = Console.ReadLine();
+            int length = field.Length;
+            int last_char = length - 1;
+
+            int comma_position = field.IndexOf(",");
+            string bracket1 = field.Substring(0, 1);
+            String bracket2 = field.Substring(last_char);
+
+            if (comma_position <= -1)
+            {
+                Console.WriteLine(" EROR\n enter the field in one of this formes [a,b] {a,b} [a,b} {a,b]: ");
+                goto tryagain;
+
+            }
+            int C = comma_position - 1;
+            int cc = comma_position + 1;
+            int ccc = length -= (cc + 1);
+            string first_num = field.Substring(1, C);
+            string sconed_num = field.Substring(cc, ccc);
+            float a = float.Parse(first_num);
+            float b = float.Parse(sconed_num);
+            if (a >= b)
+            {
+                Console.WriteLine("eror a>= b\n try again : ");
+                goto tryagain;
+            }
+            if (bracket1 == "[" & bracket2 == "]")
+            {
+                Console.WriteLine("the maj is :[" + b + ",+~}");
+                Console.WriteLine("the mino is :{-~," + a + "]");
+
+                Console.WriteLine("the max is : " + b);
+                Console.WriteLine("the supp is : " + b);
+                Console.WriteLine("the min is  : " + a);
+                Console.WriteLine("the inf is : " + a);
+            }
+            if (bracket1 == "[" & bracket2 == "}")
+            {
+                Console.WriteLine("the maj is :[" + b + ",+~}");
+                Console.WriteLine("the mino is :{-~," + a + "]");
+                Console.WriteLine("the max is : ∅");
+                Console.WriteLine("the spp is " + b);
+                Console.WriteLine("the min is : " + a);
+                Console.WriteLine("the inf is : " + a);
+            }
+            if (bracket1 == "{" & bracket2 == "]")
+            {
+                Console.WriteLine("the maj is :[" + b + ",+~}");
+                Console.WriteLine("the mino is :{-~," + a + "]");
+                Console.WriteLine("the max is : " + b);
+                Console.WriteLine("the supp is : " + b);
+                Console.WriteLine("the min is : ∅ ");
+                Console.WriteLine("the inf is : " + a);
+            }
+            if (bracket1 == "{" & bracket2 == "}")
+            {
+                Console.WriteLine("the maj is :[" + b + ",+~}");
+                Console.WriteLine("the mino is :{-~," + a + "]");
+                Console.WriteLine("the max is : ∅");
+                Console.WriteLine("the supp is : " + b);
+                Console.WriteLine("the min is : ∅");
+                Console.WriteLine("the inf is : " + a);
+            }
+            Console.WriteLine("do you want to try again N/Y :");
+            string end_message = Console.ReadLine();
+            if (end_message == "Y")
+            {
+                goto field_scritp;
+            }
+            else
+            {
+                goto done;
+            }
+            finished_ens:
+
+            Console.WriteLine("enter the ens in this forme please a,b,c,d,e,f,g,h...");
+
+
+
+
+
+
+
+
+            done:
+            Console.WriteLine(length);
+            Console.WriteLine(comma_position);
+            Console.WriteLine(first_num + "  " + sconed_num);
+            Console.WriteLine(bracket1 + " " + bracket2);
+            Console.WriteLine(field);
+
+        }
+    }
+}
